@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  default_python_version: "3.10"
+
+jobs:
+  lint:
+    name: Static analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.default_python_version }}
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v2.0.3
+
+  tests:
+    name: Tests (Python ${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.10"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install project dependencies
+        run: |
+          # See: https://github.com/python-poetry/poetry/issues/4210
+          poetry config experimental.new-installer false
+          poetry install -E test
+
+      - name: Run tests with coverage
+        run: |
+          poetry run pytest -v --cov-report=term \
+          --cov=pelican/plugins/myst \
+          --cov-report=xml:reports/coverage.xml \
+          --junitxml=reports/tests.xml
+
+      - name: Send coverage results to Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          files: reports/coverage.xml
+          flags: unittests
+          name: Python ${{ matrix.python }}
+
+  success:
+    name: Main Workflow Succeeded
+    runs-on: ubuntu-latest
+    needs: [lint, tests]
+    steps:
+      - name: Empty job for easier merge condition
+        run: echo "✔ Success"
