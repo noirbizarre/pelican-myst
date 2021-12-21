@@ -1,5 +1,8 @@
 # Pelican Myst
 
+[![CI](https://github.com/noirbizarre/pelican-myst/actions/workflows/ci.yaml/badge.svg?event=push)](https://github.com/noirbizarre/pelican-myst/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/noirbizarre/pelican-myst/branch/main/graph/badge.svg?token=m7Fws9Z2E1)](https://codecov.io/gh/noirbizarre/pelican-myst)
+
 A Pelican Myst reader parsing Markdown files using [Myst syntax](https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html) with YAML frontmatter headers.
 
 ## Requirements
