@@ -550,7 +550,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "types-mock"
-version = "4.0.4"
+version = "4.0.5"
 description = "Typing stubs for mock"
 category = "main"
 optional = true
@@ -997,8 +997,8 @@ tomli = [
     {file = "tomli-1.2.3.tar.gz", hash = "sha256:05b6166bff487dc068d322585c7ea4ef78deed501cc124060e0f238e89a9231f"},
 ]
 types-mock = [
-    {file = "types-mock-4.0.4.tar.gz", hash = "sha256:b29a0d14b167ec83842b4c7c59201a1cc2eed7e603e894d0ccfeafc9a2646e31"},
-    {file = "types_mock-4.0.4-py3-none-any.whl", hash = "sha256:d51f75ea6732355cb400c3146adb4472d33203430639230c2ceac8816b9734ab"},
+    {file = "types-mock-4.0.5.tar.gz", hash = "sha256:d6a95daf3e65fa2457cc81a85fd16fbb8bcb547faa9759ad4c1114622f0d299c"},
+    {file = "types_mock-4.0.5-py3-none-any.whl", hash = "sha256:ae4c04a45f64b937815b60f00bd6da0d68a76d9558cc2da4c9d772855558dbb7"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.0.1-py3-none-any.whl", hash = "sha256:7f001e5ac290a0c0401508864c7ec868be4e701886d5b573a9528ed3973d9d3b"},
